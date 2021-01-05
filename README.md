@@ -1,3 +1,7 @@
+## This app references the Toronto Government data set
+
+https://open.toronto.ca/dataset/ttc-real-time-next-vehicle-arrival-nvas/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
