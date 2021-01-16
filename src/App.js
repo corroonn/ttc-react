@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      value: "",
+      value: 0,
       routeOptions: ["loading..."],
       stopOptions: ["Select a route"],
     };
@@ -15,7 +15,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("https://nameless-tundra-18596.herokuapp.com/routes/")
+    fetch("https://nameless-tundra-18596.herokuapp.com/routes/", {
+      method: "GET",
+    })
       .then((response) => response.json())
       .then((data) => {
         this.setState({
@@ -32,24 +34,22 @@ class App extends React.Component {
     });
   }
 
-  componentDidUpdate(prevState) {
-    if (
-      this.state.value !== prevState.value &&
-      Number.isFinite(this.state.value)
-    ) {
-      fetch(
-        "https://nameless-tundra-18596.herokuapp.com/stops?route=" +
-          this.state.value
-      )
-        .then((response) => response.json())
-        .then((data) => console.log(Object.keys(data)));
-      // .then((data)=> {
-      //   this.setState({
-      //     ...this.prevState,
-      //     routeOptions: Object.keys(data)
-      //   })
-      // });
-    }
+  componentDidUpdate() {
+    // fetch(
+    //   "https://nameless-tundra-18596.herokuapp.com/stops?route=" +
+    //     this.state.value,
+    //   {
+    //     method: "GET",
+    //   }
+    // )
+    //   .then((response) => response.json())
+    //   .then((data) => console.log(Object.keys(data)))
+    //   .then((data) => {
+    //     this.setState({
+    //       ...this.prevState,
+    //       routeOptions: Object.keys(data),
+    //     });
+    //   });
   }
 
   render() {
